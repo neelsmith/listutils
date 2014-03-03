@@ -1,0 +1,18 @@
+
+apply plugin : 'groovy'
+apply from: 'versions.gradle'
+
+group = "edu.holycross.shot"
+version = '0.0.1'
+
+
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+  groovy  group: 'org.codehaus.groovy', name: 'groovy-all', version: groovyVersion
+  testCompile group: 'junit', name: 'junit', version: junitVersion
+}

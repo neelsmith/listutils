@@ -1,0 +1,5 @@
+
+project.ext {
+  groovyVersion = "2.0.6"
+  junitVersion = '4.8.2'	
+}
