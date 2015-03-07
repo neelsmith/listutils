@@ -7,5 +7,5 @@ Compare lists of objects of any kind.
 
 To add:
 
-- formal specifications
-- API documentation
+- [formal specifications](specs/listutils/ListUtils.html)
+- [API documentation](api)
