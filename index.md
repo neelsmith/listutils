@@ -5,7 +5,6 @@ layout: page
 
 Compare lists of objects of any kind.
 
-To add:
 
-- [formal specifications](specs/listutils/ListUtils.html)
+- See [formal specifications](specs/listutils/ListUtils.html) with concordion tests
 - [API documentation](api)
