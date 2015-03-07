@@ -1,0 +1,30 @@
+# Dependencies
+markdown:         redcarpet
+pygments:         true
+
+# Permalinks
+permalink:        pretty
+
+# Setup
+title:            List utilities
+tagline:          'Diff lists of any kind of object'
+description:      ''
+baseurl: '/listutils/'
+
+
+author:
+  name:           'Neel Smith'
+ 
+
+paginate:         5
+
+
+version:          0.12.0
+
+links:
+  - title: Github project
+    url: https://github.com/neelsmith/listutils
+    external: true
+  - title: Neel Smith elsewhere on github
+    url: http://neelsmith.github.io
+    external: true
