@@ -2,6 +2,8 @@
 
 `listutils` compares two ordered lists, `l1` and `l2`, of objects of any type.  
 
+
+## Analyses
 It generates ordered lists containing:
 
 - the longest common sequence (LCS) (an ordered intersection of `l1` and `l2`)
@@ -78,3 +80,9 @@ and the elements unique to list 2 are
 </table>
 
 @closeex@
+
+
+## Reporting and output ##
+
+Specifications for possible formats for reporting output may be added here.
+
