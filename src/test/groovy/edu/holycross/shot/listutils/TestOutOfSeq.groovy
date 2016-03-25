@@ -19,11 +19,9 @@ class TestOutOfSeq extends GroovyTestCase {
     def expectedLcs = [2,3,6,7]
     assert ldiff.lcs == expectedLcs
 
-    println "first " + ldiff.list1Only
-    println "second: " + ldiff.list2Only
-    println "Composite:"
-    println ldiff.diffs
-
+    assert  ldiff.list1Only == [1, 4, 5]
+    assert ldiff.list2Only ==  [0, 1]
+    assert ldiff.scs == [1,2,0,1,3,4,5,6,7]
   }
 
 }

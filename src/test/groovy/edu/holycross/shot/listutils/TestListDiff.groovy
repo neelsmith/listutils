@@ -24,13 +24,6 @@ class TestListDiff extends GroovyTestCase {
 
     def expectedSecondOnly = [0]
     assert ldiff.list2Only == expectedSecondOnly
-
-    System.err.println ldiff.diffs
-    ldiff.diffs.each {
-      println "${it} (${it.getClass()})"
-    }
-
-
   }
 
 }
