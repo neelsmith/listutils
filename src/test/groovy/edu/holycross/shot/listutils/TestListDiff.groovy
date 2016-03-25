@@ -6,8 +6,6 @@ import org.junit.Test
 
 class TestListDiff extends GroovyTestCase {
 
-
-
   def first = [1,2,3,4,5,6,7]
   def second = [0,1,2,3,6,7]
 
