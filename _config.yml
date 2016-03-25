@@ -1,5 +1,5 @@
 # Dependencies
-markdown:         redcarpet
+markdown:         kramdown
 pygments:         true
 
 # Permalinks
@@ -7,14 +7,14 @@ permalink:        pretty
 
 # Setup
 title:            List utilities
-tagline:          'Diff lists of any kind of object'
-description:      ''
+tagline:          'Compare two ordered lists of objects of any type'
+description:      'Find longest common subsequence, shortest common supersequence, and elements unique to each list'
 baseurl: '/listutils/'
 
 
 author:
   name:           'Neel Smith'
- 
+
 
 paginate:         5
 
