@@ -25,3 +25,27 @@ Use the `ListDiff` class to find:
 - [specifications](specs/listutils/ListUtils.html) with concordion tests
 - [API documentation](api)
 - maven identifiers: group `edu.holycross.shot`, package `listutils`, available from the repository at <http://beta.hpcc.uh.edu/nexus/content/groups/public>
+
+
+## CL scripts for printing LCS and SCS of two strings
+
+Groovy scripts with a grapes dependency on `listutils` to apply LCS and SCS to sequences of characters in two strings:
+
+- [lcs.groovy](https://gist.github.com/neelsmith/393dbe8a56e5eb1bd1c6)
+- [scs.groovy](https://gist.github.com/neelsmith/7fc5ae04ae58bcf3ac8a)
+
+Examples:
+
+     groovy lcs.groovy 'Dr Rock-and-Roll Star' 'Doctor Rock Star'
+
+prints
+
+     Dr Rock Star
+
+while
+
+     groovy scs.groovy 'Dr Rock-and-Roll Star' 'Doctor Rock Star'
+
+prints
+
+     Doctor Rock-and-Roll Star
