@@ -1,8 +1,7 @@
 package edu.holycross.shot.listutils
 
 
-import groovy.xml.MarkupBuilder
-
+import com.ibm.icu.text.UCharacterIterator
 
 /**
 * A class for working with a pair of ordered lists to compare.
@@ -26,7 +25,7 @@ class ListDiff {
 
   /** The Shortest Common Supersequence of the two lists. */
   ArrayList scs = []
-  
+
   /** A list of the objects appearing in list1 only, ordered by
    * their appearance in list1.
    */
@@ -104,7 +103,7 @@ class ListDiff {
       }
     }
   }
-  
+
   /** Constructor
    * @param l1 The first list of objects to compare.
    * @param l2 The second list of objects to compare.
@@ -118,5 +117,20 @@ class ListDiff {
     }
     computeSequences()
   }
+
+
+  ListDiff (String s1, String s2) {
+    def iter1 = UCharacterIterator.getInstance (s1)
+    def cp
+    while(( cp=iter1.nextCodePoint())!= UCharacterIterator.DONE){
+      list1.add(new String(Character.toChars(cp)))
+    }
+    def iter2 = UCharacterIterator.getInstance (s2)
+    while(( cp=iter2.nextCodePoint())!= UCharacterIterator.DONE){
+      list2.add(new String(Character.toChars(cp)))
+    }
+    computeSequences()
+  }
+
 
 }

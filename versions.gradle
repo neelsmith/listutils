@@ -1,5 +1,8 @@
 
 project.ext {
-  groovyVersion = '[2.0,)'	
-  junitVersion = '4.8.2'	
+  groovyVersion = '[2.0,)'
+  junitVersion = '4.8.2'
+  ucIteratorVersion = "3.4.4"
+  //import com.ibm.icu.text.UCharacterIterator
+//'com.ibm.icu:icu4j:3.4.4')
 }
