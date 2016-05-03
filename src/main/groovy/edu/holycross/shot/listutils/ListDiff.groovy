@@ -114,10 +114,7 @@ class ListDiff {
 	  }
 	  
 	}
-	// If i == size, then check other list for remainders.
-	//
 
-	
       } else {
 
 	list2Only.add(list2[j])
