@@ -4,6 +4,8 @@ layout: page
 ---
 
 
+**1.1.2**: Fixes a bug in handling trailing elements when one list ends with one or more elements not in the other list..
+
 
 **1.1.0**: New functionality:  compare two Unicode strings, results expressed as lists of one-codepoint-long Strings.
 
