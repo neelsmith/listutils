@@ -105,7 +105,6 @@ class ListDiff {
 	i++;
 
 	if (i == list1Size) {
-	  
 	  if (debug > 0) {System.err.println "Hit end of i = ${i}, j is ${j} and list2[j] is ${list2[j]}"}
 	  while (j < list2Size) {
 	    scs.add(list2[j])
@@ -131,6 +130,16 @@ class ListDiff {
 	  diffs.add(tagStr)
 	}
 	j++;
+	if (j == list2Size) {
+	  if (debug > 0) {System.err.println "Hit end of i = ${i}, j is ${j} and list2[j] is ${list2[j]}"}
+	  while (i < listiSize) {
+	    scs.add(list1[i])
+	    list1Only.add(list1[i])
+	    i++
+	  }
+	  
+	}
+
       }
     }
   }
