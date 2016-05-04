@@ -6,7 +6,7 @@ layout: page
 A JVM library to compare two lists, `l1` and `l1`, of objects of any kind.
 
 
-- version: **1.1.3**.  [Release notes](releases)
+- version: **1.1.4**.  [Release notes](releases)
 - requires: java version >= 7
 
 ## Overview

@@ -3,6 +3,8 @@ title: "List utilities: release notes"
 layout: page
 ---
 
+**1.1.4**: Fixes a bug when one list has trailing elements following last element where both lists agree.
+
 
 **1.1.3**: Identical to 1.1.2, but compiled for java 7 as well as java 8.
 
