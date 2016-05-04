@@ -60,7 +60,7 @@ class ListDiff {
       System.err.println "${list1} of size " + list1Size
       System.err.println "${list2} of size " + list2Size
     }
-    
+
     lcsLens = new int[list1Size+1][list2Size+1]
     // compute 2-D array of possible LCS lengths:
     for (int i = list1Size-1; i >= 0; i--) {
@@ -79,7 +79,7 @@ class ListDiff {
     int i = 0, j = 0;
     while(i < list1Size && j < list2Size) {
       if (debug > 0) {System.err.print "at ${i}, ${j}: "}
-      
+
       if (list1[i] == list2[j]) {
 	if (debug > 0) {System.err.println "agree ${list1[i]}"}
 	// if both lists agree, add to both LCS
@@ -89,6 +89,18 @@ class ListDiff {
 	diffs.add(["both": list1[i]])
 	i++;
 	j++;
+	if(debug > 0) { System.err.println "Bump both: ${i}/${j}" }
+	// check here for limit on one, but not other?
+	if (i == list1Size) {
+	  if (debug > 0) {System.err.println "Hit end of i = ${i}, j is ${j} and list2[j] is ${list2[j]}"}
+	  while (j < list2Size) {
+	    scs.add(list2[j])
+	    list2Only.add(list2[j])
+	    j++
+	  }
+	}
+	
+
 
       } else if (lcsLens[i+1][j] >= lcsLens[i][j+1]) {
 
@@ -103,7 +115,7 @@ class ListDiff {
 	  diffs.add(tagStr)
 	}
 	i++;
-
+	if (debug > 0) {System.err.println "Bump i to " + i}
 	if (i == list1Size) {
 	  if (debug > 0) {System.err.println "Hit end of i = ${i}, j is ${j} and list2[j] is ${list2[j]}"}
 	  while (j < list2Size) {
@@ -111,9 +123,19 @@ class ListDiff {
 	    list2Only.add(list2[j])
 	    j++
 	  }
-	  
+
 	}
 
+	if (j >= list2Size) {
+	  if (debug > 0) {System.err.println "Hit end of j = ${j}, i is ${i} and list1[i] is ${list1[i]}"}
+	  while (i < list1Size) {
+	    scs.add(list1[i])
+	    list1Only.add(list1[i])
+	    i++;
+	  }
+	}
+
+		
       } else {
 
 	list2Only.add(list2[j])
@@ -130,14 +152,15 @@ class ListDiff {
 	  diffs.add(tagStr)
 	}
 	j++;
-	if (j == list2Size) {
-	  if (debug > 0) {System.err.println "Hit end of i = ${i}, j is ${j} and list2[j] is ${list2[j]}"}
-	  while (i < listiSize) {
+	if (debug > 0) {System.err.println "Bump j to " + j}
+	if (j >= list2Size) {
+	  if (debug > 0) {System.err.println "Hit end of j = ${j}, i is ${i} and list1[i] is ${list1[i]}"}
+	  while (i < list1Size) {
 	    scs.add(list1[i])
 	    list1Only.add(list1[i])
 	    i++
 	  }
-	  
+
 	}
 
       }
@@ -175,8 +198,22 @@ class ListDiff {
     computeSequences()
   }
 
-  
 
+
+  ListDiff (String s1, String s2, def debugLevel) {
+    this.debug = debugLevel
+
+    def iter1 = UCharacterIterator.getInstance (s1)
+    def cp
+    while(( cp=iter1.nextCodePoint())!= UCharacterIterator.DONE){
+      list1.add(new String(Character.toChars(cp)))
+    }
+    def iter2 = UCharacterIterator.getInstance (s2)
+    while(( cp=iter2.nextCodePoint())!= UCharacterIterator.DONE){
+      list2.add(new String(Character.toChars(cp)))
+    }
+    computeSequences()
+  }
   ListDiff (String s1, String s2) {
     def iter1 = UCharacterIterator.getInstance (s1)
     def cp

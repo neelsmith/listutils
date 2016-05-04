@@ -40,8 +40,23 @@ class TestDiffList2Trails extends GroovyTestCase {
     assert ldiff.getLcs().join("") == "qh"
     assert ldiff.list2Only == ["|"]
     assert ldiff.list1Only == ["r", "w", "n"]
-
-
   }
+
+
+    void testMorphEx() {
+      def debug = 0
+      def second = "lush|"
+      def first =  "<#>lu_sh"
+
+      ListDiff ldiff = new ListDiff(first,second,debug)
+
+      assert ldiff
+
+      assert ldiff.getScs().join("") == "<#>lu_sh|"
+      assert ldiff.getLcs().join("") == "lush"
+      assert ldiff.list2Only == ["|"]
+      assert ldiff.list1Only == ["<", "#", ">", "_"]
+    
+    }
 
 }
