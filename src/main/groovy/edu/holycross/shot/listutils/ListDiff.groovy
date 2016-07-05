@@ -221,5 +221,32 @@ class ListDiff {
     computeSequences()
   }
 
+  String toCriticMarkup() {
+    StringBuilder cm = new StringBuilder()
+    diffs.each { diff ->
 
+    switch (diff.dtype) {
+      case DescriptorType.ONE :
+      cm.append( "{--${diff.token}--} ".toString())
+      break
+      case DescriptorType.TWO :
+      cm.append ("{++${diff.token}++} ".toString())
+      break
+
+      case DescriptorType.BOTH:
+      cm.append( "${diff.token} ".toString())
+      break
+
+      case DescriptorType.ONE_ELSEWHERE:
+      cm.append( "${diff.token}  {>>${diff.token} appears elsewhere in list 1 <<} ".toString())
+      break
+
+      case DescriptorType.TWO_ELSEWHERE:
+      cm.append( " {>>${diff.token} appears elsewhere in list 2 <<} ".toString())
+      break
+    }
+    
+    }
+    return cm.toString()
+  }
 }
