@@ -33,7 +33,6 @@ group = "edu.holycross.shot"
 version = '1.2.0'
 
 
-
 buildscript {
   repositories {
     mavenCentral()

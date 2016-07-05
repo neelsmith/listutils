@@ -13,7 +13,7 @@ class TestUnicodeCp extends GroovyTestCase {
   void testBasics() {
     ListDiff ldiff = new ListDiff(s1,s2)
     assert ldiff
-    assert  ldiff.getScs().join("") == "μΜῆνιν ἄειδε, θεά"
+    assert  ldiff.getScs().join("") == "μΜῆνιν ἄειδε, θεά,"
     assert ldiff.getLcs().join("") == "ῆνιν ἄειδε θεά"
   }
 
