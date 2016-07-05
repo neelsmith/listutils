@@ -8,7 +8,9 @@ import org.junit.Test
 class TestDiffDescriptor extends GroovyTestCase {
 
   @Test
-  void testValues() {
-    assert 1 == 2
+  void testConstructor() {
+    DiffDescriptor dd = new DiffDescriptor(DescriptorType.BOTH,"δέ")
+    assert dd.dtype.getLabel() == "both"
+    assert dd.token == "δέ"
   }
 }

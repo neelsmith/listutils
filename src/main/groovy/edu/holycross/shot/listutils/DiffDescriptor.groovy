@@ -8,8 +8,12 @@ package edu.holycross.shot.listutils
 class DiffDescriptor {
 
 
-// Do an enum for values
+  DescriptorType dtype
+  String token
 
-  DiffDescriptor() {}
+  DiffDescriptor(DescriptorType dt, String str) {
+    this.dtype = dt
+    this.token = str
+  }
 
 }
