@@ -11,6 +11,7 @@ class TestListDiff extends GroovyTestCase {
 
   void testBasics() {
     ListDiff ldiff = new ListDiff(first,second)
+    ldiff.debug = 10
 
     assert ldiff
 

@@ -84,7 +84,10 @@ class ListDiff {
 	// and composite, diffs
 	lcs.add(list1[i])
 	scs.add(list1[i])
-	diffs.add(["both": list1[i]])
+	//diffs.add(["both": )
+
+  DiffDescriptor dd = new DiffDescriptor(DescriptorType.BOTH, list1[i])
+  diffs.add(dd)
 	i++;
 	j++;
 	if(debug > 0) { System.err.println "Bump both: ${i}/${j}" }
@@ -97,7 +100,7 @@ class ListDiff {
 	    j++
 	  }
 	}
-	
+
 
 
       } else if (lcsLens[i+1][j] >= lcsLens[i][j+1]) {
@@ -106,11 +109,12 @@ class ListDiff {
 	if (debug > 0) {System.err.println "1 only: ${list1Only}"}
 	scs.add(list1[i])
 	if (list2.contains(list1[i])) {
-	  def tagStr = ["OneElsewhereInTwo" : list1[i]]
-	  diffs.add(tagStr)
+	  //def tagStr = ["OneElsewhereInTwo" : list1[i]]
+
+	  diffs.add(new DiffDescriptor(DescriptorType.TWO_ELSEWHERE, list1[i]))
 	} else {
-	  def tagStr = ["oneOnly" : list1[i]]
-	  diffs.add(tagStr)
+	  //def tagStr = ["oneOnly" : list1[i]]
+	  diffs.add(new DiffDescriptor(DescriptorType.ONE, list1[i]))
 	}
 	i++;
 	if (debug > 0) {System.err.println "Bump i to " + i}
@@ -123,21 +127,23 @@ class ListDiff {
 	  }
 	}
 
-		
+
       } else {
 
 	list2Only.add(list2[j])
 	if (debug > 0) {System.err.println "2 only: ${list2Only}"}
 	scs.add(list2[j])
 	if (list1.contains(list2[j])) {
-	  def tagStr = ["TwoElsewhereInOne" : list2[j]]
-	  diffs.add(tagStr)
+	  //def tagStr = ["TwoElsewhereInOne" : list2[j]]
+    diffs.add(new DiffDescriptor(DescriptorType.ONE_ELSEWHERE, list1[i]))
+
 	  if (debug > 0) {System.err.println "elsewhere in one"}
 
 	} else {
-	  def tagStr = ["twoOnly" : list2[j]]
+	  //def tagStr = ["twoOnly" : list2[j]]
 	  if (debug > 0) {System.err.println "what's left? ${list2Only}"}
-	  diffs.add(tagStr)
+    diffs.add(new DiffDescriptor(DescriptorType.TWO, list2[j]))
+
 	}
 	j++;
 	if (debug > 0) {System.err.println "Bump j to " + j}

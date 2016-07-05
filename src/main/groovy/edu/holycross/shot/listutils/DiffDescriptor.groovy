@@ -9,11 +9,11 @@ class DiffDescriptor {
 
 
   DescriptorType dtype
-  String token
+  Object token
 
-  DiffDescriptor(DescriptorType dt, String str) {
+  DiffDescriptor(DescriptorType dt, Object o) {
     this.dtype = dt
-    this.token = str
+    this.token = o
   }
 
 }
