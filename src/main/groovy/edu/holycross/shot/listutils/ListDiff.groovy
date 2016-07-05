@@ -38,9 +38,7 @@ class ListDiff {
    */
   ArrayList list2Only = []
 
-  /** Diff descriptor, a kind of composite mashup of
-   * both source lists into a single list with properties
-   * tagging status of elements not common to both source lists.
+  /** A list of DiffDescriptor objects.
    */
   ArrayList diffs = []
 
@@ -60,7 +58,7 @@ class ListDiff {
       System.err.println "${list1} of size " + list1Size
       System.err.println "${list2} of size " + list2Size
     }
-    
+
     lcsLens = new int[list1Size+1][list2Size+1]
     // compute 2-D array of possible LCS lengths:
     for (int i = list1Size-1; i >= 0; i--) {
@@ -79,7 +77,7 @@ class ListDiff {
     int i = 0, j = 0;
     while(i < list1Size && j < list2Size) {
       if (debug > 0) {System.err.print "at ${i}, ${j}: "}
-      
+
       if (list1[i] == list2[j]) {
 	if (debug > 0) {System.err.println "agree ${list1[i]}"}
 	// if both lists agree, add to both LCS
@@ -111,7 +109,7 @@ class ListDiff {
 	    list2Only.add(list2[j])
 	    j++
 	  }
-	  
+
 	}
 
       } else {
@@ -137,7 +135,7 @@ class ListDiff {
 	    list1Only.add(list1[i])
 	    i++
 	  }
-	  
+
 	}
 
       }
@@ -175,7 +173,7 @@ class ListDiff {
     computeSequences()
   }
 
-  
+
 
   ListDiff (String s1, String s2) {
     def iter1 = UCharacterIterator.getInstance (s1)
