@@ -121,19 +121,6 @@ class ListDiff {
 	    list2Only.add(list2[j])
 	    j++
 	  }
-
-<<<<<<< HEAD
-=======
-	}
-
-	if (j >= list2Size) {
-	  if (debug > 0) {System.err.println "Hit end of j = ${j}, i is ${i} and list1[i] is ${list1[i]}"}
-	  while (i < list1Size) {
-	    scs.add(list1[i])
-	    list1Only.add(list1[i])
-	    i++;
-	  }
->>>>>>> 33d694b3625b6805b7cf206046275fe1e1e4f592
 	}
 
 		
@@ -199,10 +186,6 @@ class ListDiff {
     computeSequences()
   }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 33d694b3625b6805b7cf206046275fe1e1e4f592
 
 
   ListDiff (String s1, String s2, def debugLevel) {
