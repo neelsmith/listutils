@@ -29,7 +29,31 @@ class TestCriticMarkup extends GroovyTestCase {
     assert cm.split(/[\s]+/).eachWithIndex { token,i ->
       assert token == expectedTokens[i]
     }
-    
+
+    String cmSimple = ldiff.toCriticMarkup(false)
+    assert cmSimple.split(/[\s]+/).eachWithIndex { token,i ->
+      assert token == expectedTokens[i]
+    }
   }
 
+
+
+
+  void testPlacement() {
+    def first = [2,3,4,5,1,6,7]
+    def second = [0,1,2,3,6,7]
+    ListDiff ldiff = new ListDiff(first,second)
+
+    String cm = ldiff.toCriticMarkup()
+    def expected = "{++0++} 2  {>>2 appears elsewhere in list 1 <<} 2 3 {--4--} {--5--} 1 {>>1 appears elsewhere in list 2 <<} 6 7 "
+    assert cm  == expected
+
+
+    String cmSimple = ldiff.toCriticMarkup(false)
+    def expectedSimple = ["{++0++}", "2", "3", "{--4--}", "{--5--}","6", "7"]
+    assert cmSimple.split(/[\s]+/).eachWithIndex { token,i ->
+      assert token == expectedSimple[i]
+    }
+    
+  }
 }

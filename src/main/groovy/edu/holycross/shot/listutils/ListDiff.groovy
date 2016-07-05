@@ -222,6 +222,9 @@ class ListDiff {
   }
 
   String toCriticMarkup() {
+    return toCriticMarkup(true)
+  }
+  String toCriticMarkup(boolean reportAll) {
     StringBuilder cm = new StringBuilder()
     diffs.each { diff ->
 
@@ -238,14 +241,18 @@ class ListDiff {
       break
 
       case DescriptorType.ONE_ELSEWHERE:
+      if (reportAll) {
       cm.append( "${diff.token}  {>>${diff.token} appears elsewhere in list 1 <<} ".toString())
+    }
       break
 
       case DescriptorType.TWO_ELSEWHERE:
-      cm.append( " {>>${diff.token} appears elsewhere in list 2 <<} ".toString())
+        if (reportAll) {
+      cm.append( "${diff.token} {>>${diff.token} appears elsewhere in list 2 <<} ".toString())
+    }
       break
     }
-    
+
     }
     return cm.toString()
   }
